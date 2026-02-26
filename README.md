@@ -1,5 +1,38 @@
 # AI Mental Health — Student Depression (Model + Pinecone RAG + Streamlit)
 
+## Overview
+This project is an **AI assistant for student mental-health risk assessment**. It combines:
+- a **ML classification model** (trained on a structured dataset) to estimate depression-risk from a student profile
+- an **LLM-powered assistant** enhanced with **Retrieval-Augmented Generation (RAG)** so responses can be grounded in your curated knowledge base (reducing hallucinations and improving consistency).
+
+The assistant is orchestrated as a **multi-step agent workflow** using **LangGraph**. The final user experience is provided via a **Streamlit** web app.
+
+### Dataset
+- **Kaggle Student Depression Dataset**
+- Size: **27,870 rows × 18 columns**
+- Type: **tabular / structured features**
+
+### What the system does
+- Collects/derives a structured **student profile** (from user chat inputs)
+- Runs a **prediction model** to estimate risk
+- Uses **Pinecone vector search** (RAG) to retrieve relevant context from your document collection
+- Generates a final, context-aware response via an **LLM**, guided by prompts to improve reliability
+
+### Model & evaluation (baseline results)
+- Accuracy: **0.838**
+- ROC-AUC: **0.917**
+- Weighted F1: **0.84**
+
+### Tech stack
+- **Python**
+- **Tabular ML classification** (training + evaluation in `model.ipynb`)
+- **LangGraph** (agent/workflow orchestration)
+- **RAG** with **Pinecone** (vector database + retrieval)
+- **Prompt engineering** (to reduce hallucination and improve consistency)
+- **Streamlit** (UI)
+
+---
+
 This repository must be run in the following order:
 
 1. **Train/build the ML model** (Notebook: `model.ipynb`)
